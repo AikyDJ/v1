@@ -157,7 +157,8 @@ function uploadFiles($files, $path, $outputnamePrefix, $id_user)
             }
 
             $extension = pathinfo($files['name'][$index], PATHINFO_EXTENSION);
-            $newName = $outputnamePrefix . '_' . $index . '.' . $extension;
+            $uniqueId = time() . '_' . mt_rand(1000, 9999);
+            $newName = $outputnamePrefix . '_' . $uniqueId . '.' . $extension;
 
             if (move_uploaded_file($tmpName, $path . $newName)) {
                 echo "Fichier uploadé avec succès : " . $newName . '<br>';
