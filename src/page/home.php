@@ -160,8 +160,8 @@ $DATAcat = getCategories();
             <select name="categorie" id="categorie" class="form-select shadow-sm custom-select">
                 <option value="">All Categories</option>
                 <?php foreach ($DATAcat as $cat): ?>
-                    <option value="<?= htmlspecialchars($cat['id_categorie']) ?>">
-                        <?= htmlspecialchars($cat['nom_categorie']) ?>
+                    <option value="<?= $cat['id_categorie']?>">
+                        <?= $cat['nom_categorie']?>
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -179,9 +179,9 @@ $DATAcat = getCategories();
                     <div class="card product-card h-100 border-0 shadow-sm">
                         <div class="card-body d-flex flex-column">
                             <div class="mb-2 text-muted small text-end">
-                                <span class="badge bg-secondary"><?= htmlspecialchars($publication['objet_categorie']) ?></span>
+                                <span class="badge bg-secondary"><?= $publication['objet_categorie']?></span>
                             </div>
-                            <h5 class="card-title text-dark"><?= htmlspecialchars($publication['nom_objet']) ?></h5>
+                            <h5 class="card-title text-dark"><?= $publication['nom_objet']?></h5>
                             <div class="mt-auto">
                                 <a href="#" class="btn btn-outline-dark btn-sm w-100 mt-3">View Product</a>
                             </div>

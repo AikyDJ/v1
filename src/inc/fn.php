@@ -22,9 +22,11 @@ function signin($nom, $email, $password, $date_naissance, $genre, $ville)
         $ville
     );
     echo $insert . "<br>";
+
     $sql_user = mysqli_query($_SERVER["base"], $insert);
     if ($sql_user) {
         echo "<p>Account created successfully</p>";
+        login($email, $password);
     } else {
         echo "<p>Server error</p>";
     }
@@ -32,7 +34,7 @@ function signin($nom, $email, $password, $date_naissance, $genre, $ville)
 
 function getUserId($email, $password): int
 {
-    $request = sprintf("SELECT id_membre FROM db_s2_ETU003936_indrana361_membre WHERE email='%s' AND mdp='%s'", $email, $password);
+    $request = sprintf("SELECT * FROM db_s2_ETU003936_indrana361_membre WHERE email='%s' AND mdp='%s'", $email, $password);
     $data = mysqli_query($_SERVER["base"], $request);
     if (mysqli_num_rows($data) > 0) {
         $row = mysqli_fetch_assoc($data);
