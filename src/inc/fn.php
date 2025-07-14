@@ -130,7 +130,7 @@ function publier($id_membre, $titre,  $id_categorie, $files)
 function insertObjImg($image, $id_objet)
 {
     $insert = sprintf(
-        "INSERT INTO db_s2_ETU003936_indrana361_image_objet (id_objet, image) VALUES (%d, '%s')",
+        "INSERT INTO db_s2_ETU003936_indrana361_images_objet (id_objet, image) VALUES (%d, '%s')",
         $id_objet,
         $image
     );
