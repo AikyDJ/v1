@@ -24,6 +24,8 @@ if ($id_user && !empty($files['name'][0])) {
 }
 if ($id_user && !empty($files)) {
     uploadFiles($files, "../base/img/", "user_" . $id_user, $id_user);
+    header("Location: ../page/index.php?page=home");
 } else {
     echo "Erreur : ID utilisateur ou fichiers manquants.";
+    header("Location: ../page/index.php?page=home");
 }
