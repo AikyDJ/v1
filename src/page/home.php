@@ -36,6 +36,8 @@ $DATAcat = getCategories();
 
 .row {
   display: flex;
+  justify-content: center;
+  justify-items: center;
   flex-wrap: wrap;
   margin-left: -12px;
   margin-right: -12px;
@@ -48,29 +50,14 @@ $DATAcat = getCategories();
   padding: 12px;
 }
 
-@media (min-width: 576px) {
-  .col-sm-6 {
-    width: 50%;
-  }
-}
-
-@media (min-width: 768px) {
-  .col-md-4 {
-    width: 33.3333%;
-  }
-}
-
-@media (min-width: 992px) {
-  .col-lg-3 {
-    width: 25%;
-  }
-}
-
 .product-card {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
-  height: 100%;
+  height: 200px;
+  width: 250px;
+  margin-left: 20px;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,6 +69,8 @@ $DATAcat = getCategories();
   transform: translateY(-6px);
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
 }
+
+
 
 .card-title {
   font-size: 20px;
@@ -111,7 +100,7 @@ $DATAcat = getCategories();
   border: none;
   border-radius: 6px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
+  width: 50px;
 }
 
 .btn:hover {
@@ -136,7 +125,7 @@ $DATAcat = getCategories();
     </div>
 
     <form action="./index.php?page=home" method="POST" class="row g-3 align-items-end mb-5">
-        <div class="col-sm-8 col-md-6 col-lg-4">
+        <div class="col-sm-8 col-md-6 col-lg-4 mb-2">
             <label for="categorie" class="form-label fw-semibold">Category</label>
             <select name="categorie" id="categorie" class="form-select">
                 <option value="">All Categories</option>
@@ -157,7 +146,7 @@ $DATAcat = getCategories();
     <div class="row g-4">
         <?php if ($DATA): ?>
             <?php foreach ($DATA as $publication): ?>
-                <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card product-card h-100 border-0 shadow-sm">
                         <div class="card-body d-flex flex-column">
                             <div class="mb-2 text-muted small text-end">
