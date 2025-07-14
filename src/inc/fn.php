@@ -3,6 +3,7 @@ include_once "../base/baselocal.php";
 
 function login($email, $password)
 {
+ 
     $request = sprintf("SELECT * FROM membre WHERE email='%s' AND mdp='%s'", $email, $password);
     $data = mysqli_query($_SERVER["base"], $request);
     return mysqli_num_rows($data) > 0;
@@ -35,23 +36,8 @@ function getUserId($email, $password): int
     return -1;
 }
 
-function publier($text, $id_user, $media_path)
-{
-    $insert = sprintf(
-        "INSERT INTO objet (nom_objet, id_membre, id_categorie) VALUES ('%s', %d, %d)",
-        $text, $id_user, $media_path
-    );
-    mysqli_query($_SERVER["base"], $insert);
-}
 
-function comment($id_objet, $text, $id_user)
-{
-    $insert = sprintf(
-        "INSERT INTO emprunt (id_objet, id_membre, date_emprunt) VALUES (%d, %d, '%s')",
-        $id_objet, $id_user, date('Y-m-d')
-    );
-    mysqli_query($_SERVER["base"], $insert);
-}
+
 
 function getPublication()
 {
@@ -85,16 +71,4 @@ function getMemberById($id)
     );
     $sql_request = mysqli_query($_SERVER["base"], $request);
     return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC)[0] : null;
-}
-
-function getCommentById($id_objet)
-{
-    $request = sprintf(
-        "SELECT id_emprunt, id_objet, id_membre, date_emprunt, date_retour
-         FROM emprunt
-         WHERE id_objet = %d",
-        $id_objet
-    );
-    $sql_request = mysqli_query($_SERVER["base"], $request);
-    return $sql_request && mysqli_num_rows($sql_request) > 0 ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
 }

@@ -44,3 +44,5 @@ INSERT INTO emprunt (id_emprunt, id_objet, id_membre, date_emprunt, date_retour)
 (8, 8, 2, '2025-07-08', NULL),
 (9, 9, 4, '2025-07-09', NULL),
 (10, 10, 1, '2025-07-10', NULL);
+
+SELECT * FROM membre WHERE email='bob@exemple.com' AND mdp='password123';

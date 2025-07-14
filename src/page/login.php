@@ -10,10 +10,11 @@
 
 <body>
     <div class="container">
-        <form class="form">
+        <form class="form" action="../inc/t_login.php" method="post">
             <div class="title">Welcome,<br><span>sign up to continue</span></div>
-            <input type="email" placeholder="Email" name="email" class="input">
-            <input type="password" placeholder="Password" name="password" class="input">
+            <input type="email" placeholder="Email" name="user" class="input">
+            <input type="password" placeholder="Password" name="mdp" class="input">
+            <input type="submit" value="login">
     </div>
     </div>
     </form>
