@@ -21,9 +21,7 @@
                     <a href="sigin.php">sign up</a>
                 </p>
             </section>
-    </div>
-    </div>
-    </form>
+        </form>
     </div>
 </body>
 
