@@ -9,10 +9,10 @@ $info = getinfo($_SESSION["id"]);
         <div class="container-fluid d-flex justify-content-between align-items-center">
 
             <div class="d-flex align-items-center gap-3">
-                <img src="<?= htmlspecialchars($info['image_profil']) ?>" alt="Profile" class="profile-picture rounded-circle border border-2">
+                <img src="<?= $info['image_profil'] ?>" alt="Profile" class="profile-picture rounded-circle border border-2">
                 <div>
-                    <h5 class="fw-semibold text-dark mb-1">NOM :<?= htmlspecialchars($info['nom']) ?></h5>
-                    <p class="text-muted small mb-0">EMAIL :<?= htmlspecialchars($info['email']) ?></p>
+                    <h5 class="fw-semibold text-dark mb-1">NOM :<?= $info['nom'] ?></h5>
+                    <p class="text-muted small mb-0">EMAIL :<?= $info['email'] ?></p>
                 </div>
             </div>
             <a href="../../index.php" class="">

@@ -10,5 +10,5 @@ $brth = $_POST["birthday"];
 $mail = $_POST["email"];
 $genre = $_POST["genre"];
 signin($user, $mail,$pwrd, $brth, $genre, null);
-
+$_SESSION["id"] = getUserId($mail, $pwrd);
 header("location:../page/index.php?page=home");
