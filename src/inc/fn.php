@@ -48,16 +48,33 @@ function getPublication()
     return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
 }
 
+function getCategories()
+{
+    $request = "SELECT * FROM categorie_objet";
+    $sql_request = mysqli_query($_SERVER["base"], $request);
+    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
+}
+function getPublicationByCategory($categoryId)
+{
+    $request = sprintf(
+        "SELECT *
+         FROM view_publication
+         WHERE id_categorie = %d",
+        $categoryId
+    );
+    $sql_request = mysqli_query($_SERVER["base"], $request);
+    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
+}
 function getPublicationById($id)
 {
     $request = sprintf(
-        "SELECT id_objet, nom_objet, id_categorie, id_membre
-         FROM objet
+        "SELECT *
+         FROM view_publication
          WHERE id_objet = %d",
         $id
     );
     $sql_request = mysqli_query($_SERVER["base"], $request);
-    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : [];
+    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
 }
 
 function getMemberById($id)

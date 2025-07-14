@@ -5,6 +5,7 @@ SELECT
     membre.email AS membre_email,
     objet.id_objet,
     objet.nom_objet,
+    categorie_objet.id_categorie,
     categorie_objet.nom_categorie AS objet_categorie,
     emprunt.id_emprunt,
     emprunt.date_emprunt,

@@ -4,12 +4,11 @@ include_once "./fn.php";
 
 session_start();
 
-$user = $_POST["user"];
-$pwrd = $_POST["pwd"];
-$name = $_POST["name"];
+$user = $_POST["nom"];
+$pwrd = $_POST["password"];
+$brth = $_POST["birthday"];
 $mail = $_POST["email"];
-$date = $_POST["birthday"];
+$genre = $_POST["genre"];
+signin($user, $mail,$pwrd, $brth, $genre, null);
 
-//signin($name, $user, $pwrd, $mail, $date);
-
-header("location:../pages/index.php?page=home");
+header("location:../page/index.php?page=home");

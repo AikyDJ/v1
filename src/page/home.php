@@ -1,5 +1,8 @@
 <?php include_once "../inc/fn.php";
-$DATA = getPublication();
+
+$DATA = isset($_POST["categorie"]) ? getPublicationByCategory($_POST["categorie"]): getPublication();
+$DATAcat = getCategories();
+
 ?>
 
 <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
@@ -8,7 +11,17 @@ $DATA = getPublication();
         <h1 class="fw-bold">Welcome to the Home Page</h1>
         <p class="text-muted">Here you can find all the latest publications.</p>
     </div>
-
+    <div class="div">
+        <form action="./index.php?page=home" method="POST">
+            <select name="categorie" id="">
+                    <option value="">All</option>
+                <?php foreach ($DATAcat as $cat ) { ?>
+                    <option value="<?= htmlspecialchars($cat['id_categorie']) ?>"><?= htmlspecialchars($cat['nom_categorie']) ?></option>
+                <?php } ?>
+            </select>
+            <input type="submit" value="filtre">
+        </form>
+    </div>
     <div class="row g-4">
         <?php if ($DATA): ?>
             <?php foreach ($DATA as $publication): ?>
