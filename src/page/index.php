@@ -13,6 +13,7 @@
     <?php include_once "./navbar.php" ?>
 
     <?php if (isset($_GET["page"]) && $_GET["page"] === "home") {
+        include_once "./upload.php";
         include_once "./home.php";
         } ?>
 </body>
