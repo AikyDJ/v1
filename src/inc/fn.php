@@ -41,12 +41,11 @@ function getUserId($email, $password): int
 
 function getPublication()
 {
-    $request = "SELECT id_objet, nom_objet, id_categorie, id_membre
-                FROM objet
-                JOIN membre ON objet.id_membre = membre.id_membre
+    $request = "SELECT *
+                FROM view_publication
                 ORDER BY id_objet DESC";
     $sql_request = mysqli_query($_SERVER["base"], $request);
-    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : [];
+    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
 }
 
 function getPublicationById($id)
@@ -65,6 +64,17 @@ function getMemberById($id)
 {
     $request = sprintf(
         "SELECT nom, date_naissance, email, ville, genre, image_profil
+         FROM membre
+         WHERE id_membre = %d",
+        $id
+    );
+    $sql_request = mysqli_query($_SERVER["base"], $request);
+    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC)[0] : null;
+}
+
+function getinfo($id) {
+    $request = sprintf(
+        "SELECT *
          FROM membre
          WHERE id_membre = %d",
         $id
