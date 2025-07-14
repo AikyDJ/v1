@@ -1,5 +1,6 @@
 <?php
 include_once "../inc/fn.php";
+include_once "../base/baselocal.php";
 
 $DATA = isset($_POST["categorie"]) ? getPublicationByCategory($_POST["categorie"]) : getPublication();
 $DATAcat = getCategories();
@@ -171,19 +172,33 @@ $DATAcat = getCategories();
                 Filter
             </button>
         </div>
-    </form>
-    <div class="row g-4">
+    </form>    <div class="row g-4">
         <?php if ($DATA): ?>
             <?php foreach ($DATA as $publication): ?>
+                <?php
+                    $id_objet = $publication['id_objet'];
+                    $sql_led = "SELECT date_emprunt FROM EMPRUNT WHERE id_objet = '$id_objet' ORDER BY date_emprunt DESC LIMIT 1";
+                    $result_led = mysqli_query($_SERVER["base"], $sql_led);
+                    $date_emprunt = '';
+                    if ($result_led && mysqli_num_rows($result_led) > 0) {
+                        $row_led = mysqli_fetch_assoc($result_led);
+                        $date_emprunt = $row_led['date_emprunt'];
+                    } else {
+                        $date_emprunt = 'Non emprunté';
+                    }
+                ?>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card product-card h-100 border-0 shadow-sm">
                         <div class="card-body d-flex flex-column">
                             <div class="mb-2 text-muted small text-end">
+                                <img src="../asset/téléchargement.jpg" alt="img product" >
                                 <span class="badge bg-secondary"><?= $publication['objet_categorie']?></span>
+                                <span class="badge bg-secondary"><?= $date_emprunt ?></span>
                             </div>
                             <h5 class="card-title text-dark"><?= $publication['nom_objet']?></h5>
                             <div class="mt-auto">
                                 <a href="#" class="btn btn-outline-dark btn-sm w-100 mt-3">View Product</a>
+                                <a href="lending.php?id_objet=<?= $publication['id_objet'] ?>" class="btn btn-outline-dark btn-sm w-100 mt-3">Prendre</a>
                             </div>
                         </div>
                     </div>
