@@ -1,20 +1,20 @@
--- Active: 1745847165775@@127.0.0.1@3306@indrana361
+-- Active: 1745847165775@@127.0.0.1@3306@employees
 -- Insert members
-INSERT INTO membre (id_membre, nom, date_naissance, genre, email, ville, mdp, image_profil) VALUES 
+INSERT INTO db_s2_ETU003936_indrana361_membre (id_membre, nom, date_naissance, genre, email, ville, mdp, image_profil) VALUES 
 (1, 'Alice', '1990-01-01', 'F', 'alice@example.com', 'Paris', 'password123', 'alice.jpg'),
 (2, 'Bob', '1985-05-15', 'M', 'bob@example.com', 'Lyon', 'password123', 'bob.jpg'),
 (3, 'Charlie', '1992-08-20', 'M', 'charlie@example.com', 'Marseille', 'password123', 'charlie.jpg'),
 (4, 'Diana', '1988-12-05', 'F', 'diana@example.com', 'Nice', 'password123', 'diana.jpg');
 
 -- Insert categories
-INSERT INTO categorie_objet (id_categorie, nom_categorie) VALUES 
+INSERT INTO db_s2_ETU003936_indrana361_categorie_objet (id_categorie, nom_categorie) VALUES 
 (1, 'esthétique'),
 (2, 'bricolage'),
 (3, 'mécanique'),
 (4, 'cuisine');
 
 -- Insert objects
-INSERT INTO objet (id_objet, nom_objet, id_categorie, id_membre) VALUES 
+INSERT INTO db_s2_ETU003936_indrana361_objet (id_objet, nom_objet, id_categorie, id_membre) VALUES 
 (1, 'Objet1', 1, 1),
 (2, 'Objet2', 2, 1),
 (3, 'Objet3', 3, 1),
@@ -33,7 +33,7 @@ INSERT INTO objet (id_objet, nom_objet, id_categorie, id_membre) VALUES
 (16, 'Objet16', 4, 4);
 
 -- Insert borrowings
-INSERT INTO emprunt (id_emprunt, id_objet, id_membre, date_emprunt, date_retour) VALUES 
+INSERT INTO db_s2_ETU003936_indrana361_emprunt (id_emprunt, id_objet, id_membre, date_emprunt, date_retour) VALUES 
 (1, 1, 2, '2025-07-01', NULL),
 (2, 2, 3, '2025-07-02', NULL),
 (3, 3, 4, '2025-07-03', NULL),
@@ -45,4 +45,4 @@ INSERT INTO emprunt (id_emprunt, id_objet, id_membre, date_emprunt, date_retour)
 (9, 9, 4, '2025-07-09', NULL),
 (10, 10, 1, '2025-07-10', NULL);
 
-SELECT * FROM membre WHERE email='bob@exemple.com' AND mdp='password123';
+SELECT * FROM db_s2_ETU003936_indrana361_membre WHERE email='bob@exemple.com' AND mdp='password123';

@@ -4,7 +4,7 @@ include_once "../base/baselocal.php";
 function login($email, $password)
 {
  
-    $request = sprintf("SELECT * FROM membre WHERE email='%s' AND mdp='%s'", $email, $password);
+    $request = sprintf("SELECT * FROM db_s2_ETU003936_indrana361_membre WHERE email='%s' AND mdp='%s'", $email, $password);
     $data = mysqli_query($_SERVER["base"], $request);
     return mysqli_num_rows($data) > 0;
 }
@@ -13,7 +13,7 @@ function signin($nom, $email, $password, $date_naissance, $genre, $ville)
 {
     echo "Debug:<br> Name: $nom <br> Email: $email <br> Birthday: $date_naissance <br> Password: $password <br> Genre: $genre <br> City: $ville <br><br>";
     $insert = sprintf(
-        "INSERT INTO membre (nom, email, mdp, date_naissance, genre, ville, image_profil) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', 'default.jpg')",
+        "INSERT INTO db_s2_ETU003936_indrana361_membre (nom, email, mdp, date_naissance, genre, ville, image_profil) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', 'default.jpg')",
         $nom, $email, $password, $date_naissance, $genre, $ville
     );
     echo $insert . "<br>";
@@ -27,7 +27,7 @@ function signin($nom, $email, $password, $date_naissance, $genre, $ville)
 
 function getUserId($email, $password): int
 {
-    $request = sprintf("SELECT id_membre FROM membre WHERE email='%s' AND mdp='%s'", $email, $password);
+    $request = sprintf("SELECT id_membre FROM db_s2_ETU003936_indrana361_membre WHERE email='%s' AND mdp='%s'", $email, $password);
     $data = mysqli_query($_SERVER["base"], $request);
     if (mysqli_num_rows($data) > 0) {
         $row = mysqli_fetch_assoc($data);
@@ -42,7 +42,7 @@ function getUserId($email, $password): int
 function getPublication()
 {
     $request = "SELECT *
-                FROM view_publication
+                FROM view_db_s2_ETU003936_indrana361_publication
                 ORDER BY id_objet DESC";
     $sql_request = mysqli_query($_SERVER["base"], $request);
     return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
@@ -50,7 +50,7 @@ function getPublication()
 
 function getCategories()
 {
-    $request = "SELECT * FROM categorie_objet";
+    $request = "SELECT * FROM db_s2_ETU003936_indrana361_categorie_objet";
     $sql_request = mysqli_query($_SERVER["base"], $request);
     return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
 }
@@ -58,7 +58,7 @@ function getPublicationByCategory($categoryId)
 {
     $request = sprintf(
         "SELECT *
-         FROM view_publication
+         FROM view_db_s2_ETU003936_indrana361_publication
          WHERE id_categorie = %d",
         $categoryId
     );
@@ -69,7 +69,7 @@ function getPublicationById($id)
 {
     $request = sprintf(
         "SELECT *
-         FROM view_publication
+         FROM view_db_s2_ETU003936_indrana361_publication
          WHERE id_objet = %d",
         $id
     );
@@ -81,7 +81,7 @@ function getMemberById($id)
 {
     $request = sprintf(
         "SELECT nom, date_naissance, email, ville, genre, image_profil
-         FROM membre
+         FROM db_s2_ETU003936_indrana361_membre
          WHERE id_membre = %d",
         $id
     );
@@ -92,7 +92,7 @@ function getMemberById($id)
 function getinfo($id) {
     $request = sprintf(
         "SELECT *
-         FROM membre
+         FROM db_s2_ETU003936_indrana361_membre
          WHERE id_membre = %d",
         $id
     );

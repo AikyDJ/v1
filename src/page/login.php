@@ -15,15 +15,15 @@
             <input type="email" placeholder="Email" name="user" class="input">
             <input type="password" placeholder="Password" name="mdp" class="input">
             <input type="submit" value="login">
+            <section>
+                <p>
+                    Not an user yet?
+                    <a href="sigin.php">sign up</a>
+                </p>
+            </section>
     </div>
     </div>
     </form>
-    <section>
-        <p>
-            Not an user yet?
-            <a href="sigin.php">sign up</a>
-        </p>
-    </section>
     </div>
 </body>
 

@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW view_publication AS
+CREATE OR REPLACE VIEW view_db_s2_ETU003936_indrana361_publication AS
 SELECT 
     membre.id_membre,
     membre.nom AS membre_nom,
@@ -11,10 +11,10 @@ SELECT
     emprunt.date_emprunt,
     emprunt.date_retour
 FROM 
-    membre
+   db_s2_ETU003936_indrana361_membre membre
 JOIN 
-    emprunt ON membre.id_membre = emprunt.id_membre
+    db_s2_ETU003936_indrana361_emprunt emprunt ON membre.id_membre = emprunt.id_membre
 JOIN 
-    objet ON emprunt.id_objet = objet.id_objet
+    db_s2_ETU003936_indrana361_objet objet ON emprunt.id_objet = objet.id_objet
 JOIN 
-    categorie_objet ON objet.id_categorie = categorie_objet.id_categorie;
+   db_s2_ETU003936_indrana361_categorie_objet categorie_objet ON objet.id_categorie = categorie_objet.id_categorie;
