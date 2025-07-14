@@ -21,8 +21,17 @@ $info = getinfo($_SESSION["id"]);
                     Logout
                 </button>
             </a>
+                        <a href="./infoperso.php" class="">
 
-
+                <button>
+                    My profile
+                </button>
+            </a>
+                <a href="../page/index.php?page=home" class="">
+                <button>
+                    Home
+                </button>
+            </a>
 
         </div>
     </nav>

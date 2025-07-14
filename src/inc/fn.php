@@ -143,6 +143,19 @@ function insertObjImg($image, $id_objet)
         return false;
     }
 }
+function returnobj($id_objet, $id_membre)
+{
+    $date_retour = date('Y-m-d');
+    $sql = "UPDATE db_s2_ETU003936_indrana361_emprun SET date_retour = '$date_retour' WHERE id_objet = '$id_objet' AND id_membre = '$id_membre'";
+    
+    if (mysqli_query($_SERVER["base"], $sql)) {
+        echo "L'objet a été retourné avec succès.";
+        return true;
+    } else {
+        echo "Erreur lors du retour de l'objet : " . mysqli_error($_SERVER["base"]);
+        return false;
+    }
+}
 function uploadFiles($files, $path, $outputnamePrefix, $id_user)
 {
     $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
@@ -172,4 +185,17 @@ function uploadFiles($files, $path, $outputnamePrefix, $id_user)
     } else {
         echo "Aucun fichier reçu.";
     }
+}
+function getMyEmprun($id_membre)
+{
+    $request = sprintf(
+        "SELECT e.*, o.* AS proprietaire_id
+         FROM db_s2_ETU003936_indrana361_emprun e
+         JOIN db_s2_ETU003936_indrana361_objet o ON e.id_objet = o.id_objet
+         WHERE e.id_membre = %d
+         ORDER BY e.date_emprun DESC",
+        $id_membre
+    );
+    $sql_request = mysqli_query($_SERVER["base"], $request);
+    return $sql_request ? mysqli_fetch_all($sql_request, MYSQLI_ASSOC) : null;
 }
